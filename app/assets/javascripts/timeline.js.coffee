@@ -6,7 +6,8 @@ window.Timeline = class Timeline
         kudo.type = 'education' for kudo in data.education
         kudos = data.work.concat data.education
 
-        box = $('<div class="box"></div>')
+        box = $('<div class="box padfront"></div>')
+        @wrap = $('<div id="timeline"></div>')
         @boxHash = kudos.map (kudo) => @decorateBoxNode box.clone(), kudo
 
     decorateBoxNode: (node, kudo) ->
@@ -28,11 +29,14 @@ window.Timeline = class Timeline
             html.push "<h1>Graduated from #{kudo.school.name}</h1>"
             html.push "<h2 class='bottom'>#{kudo.year.name}</h2>" if kudo.year
 
+        $('body').prepend @wrap
         node.append html.join ''
-        node.appendTo $('body')
+        node.appendTo @wrap
         maxHeight = node.outerHeight true
+        console.log maxHeight
         node.remove()
         node.height(40)
+        @wrap.remove()
 
         @giveJSGoodies node, maxHeight
 
@@ -46,17 +50,16 @@ window.Timeline = class Timeline
 
     dumpNodesTo: (container) ->
 
-        wrap = $('<div id="timeline"></div>')
-        container.prepend wrap
+        container.prepend @wrap
 
         sorted = @boxHash.sort (item1, item2) -> item1.year < item2.year
 
         lastYear = sorted[0].year
         for box in sorted
             if box.year and box.year isnt lastYear
-                wrap.append $("<div class='date'>#{box.year}</div>")
+                @wrap.append $("<div class='date'>#{box.year}</div>")
                 lastYear = box.year
-            wrap.append box.node
+            @wrap.append box.node
 
     giveJSGoodies: (node, maxHeight) ->
         node.mouseenter ->
@@ -153,5 +156,5 @@ testData =
     ]
 
 window.timeline = new Timeline testData
-timeline.dumpNodesTo $('#timeline')
+timeline.dumpNodesTo $('#timeline-wrap')
 
