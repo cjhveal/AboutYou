@@ -1,31 +1,40 @@
 
-<%= stylehseet_link_tag 'timeline' %>
+<%= stylesheet_link_tag 'timeline' %>
 <%= stylesheet_link_tag 'profile' %>
 
-<div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
-      <a class="brand" href="./index.html" style="text-decoration:none;"><h5 style="padding:0; line-height:20px; margin:0;">AboutYou</h5></a>
-      <div class="nav-collapse collapse">
+<body style="background:#EDEDED;">
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="./index.html" style="text-decoration:none;"><h5 style="padding:0; line-height:20px; margin:0;">AboutYou</h5></a>
+        <div class="nav-collapse collapse">
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div style="text-align:center; margin:auto; width:1000px; height:800px; background:url('images/home/linen_pattern.png')" class="padfront">
-  <div style="width:700px; height:800px; display:inline-block; vertical-align:top;">
-    <div class="outerbox padfront"></div>
-    <div id="timeline-wrap" class="outerbox" ></div>
-  </div>
-  <div style="width:250px; height:800px; display:inline-block; vertical-align:top; float:right;">
-    <div class="pic"></div>
-    <h5 style="margin:0px;">Khallil Mangalji</h5>
-    <h6 style="margin:0px;">Born May 4th | Agile Engineer</h6>
-    <h5 style="margin-bottom:0px;">Recent Activity</h5>
-    <div class="padfront" style="height:400px; width:200px; margin:auto;">
+  <div class="back-panel padfront" style ="background:url('assets/linen_pattern.png')">
+    <div style="width:700px; height:800px; display:inline-block; vertical-align:top;">
+      <div class="outerbox padfront"></div>
+      <div id="timeline-wrap" class="outerbox" ></div>
+    </div>
+    <div style="width:250px; height:800px; display:inline-block; vertical-align:top; float:right;">
+
+
+      <div class="pic"><img class="overlay" src="assets/circle_border.png" style="background: url('assets/pptest.jpeg') -24px 0 no-repeat; -webkit-border-radius: 100px; border-radius: 100px " /></div>
+
+
+
+      <h5 style="margin:0px;">Khallil Mangalji</h5>
+      <h6 style="margin:0px;">Born May 4th | Agile Engineer</h6>
+      <h5 style="margin-bottom:0px;">Recent Activity</h5>
+      <div class="padfront stream">
+      </div>
     </div>
   </div>
-</div>
 
 
-    <%= javascript_include_tag 'timeline' %> 
+
+
+  <%= javascript_include_tag 'timeline' %> 
+
 

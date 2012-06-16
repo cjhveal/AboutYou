@@ -5,6 +5,35 @@
 }
 
 .pic {
-    width: 200px;
-    height: 200px;
+    margin: 0 0 15px 50px;
+    width: 148px;
+    height: 148px;
+    border-radius: 100px !important; 
+    -webkit-border-radius: 100px !important;
 }
+
+.overlay {
+    display: block;
+    width: 150px;
+    margin-left: -1px;
+}
+
+.back-panel {
+    text-align: center; 
+    margin: auto; 
+    width: 1000px; 
+    height: 800px; 
+    background: url('/images/home/linen_pattern.png');
+    padding-top: 45px;
+}
+
+.stream {
+    height: 400px; 
+    width: 200px; 
+    margin: auto;
+}
+
+.outerbox.padfront {
+    border: 1px solid #999;
+}
+
