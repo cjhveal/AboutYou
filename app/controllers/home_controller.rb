@@ -2,6 +2,9 @@ class HomeController < ApplicationController
   def index
   end
 
+  def profile
+  end
+
   def facebook_auth
     redirect_to authenticator.url_for_oauth_code(:permissions => FB_CONFIG[:scope])
   end
