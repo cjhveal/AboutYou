@@ -5,7 +5,7 @@ gem 'rails', '3.2.3'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-
+gem 'koala'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -17,10 +17,10 @@ group :assets do
   # gem 'therubyracer', :platform => :ruby
 
   gem 'uglifier', '>= 1.0.3'
-  gem 'slim-rails'
-  gem 'less-rails'
-  gem 'twitter-bootstrap-rails'
 end
+gem 'slim-rails'
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'
 
 group :development, :test do
   gem 'sqlite3'
