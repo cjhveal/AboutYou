@@ -27,6 +27,21 @@ class User < ActiveRecord::Base
       Employer.where(attrs).first_or_create
     end
 
+    graph["education"].each do |education|
+      puts education
+      attrs = Hash.new
+
+      attrs["name"] = education["school"]["name"]
+      attrs["fbid"] = education["school"]["id"]
+      attrs["year"] = education["year"]["name"]
+      attrs["school_type"] = education["type"]
+
+      if education["concentration"]
+        attrs["concentration"] = education["concentration"].map {|conc| conc["name"]}.join ", "
+      end
+      Education.where(attrs).first_or_create
+    end
+
     user
   end
 
