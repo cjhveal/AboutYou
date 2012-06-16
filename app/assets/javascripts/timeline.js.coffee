@@ -1,8 +1,9 @@
 window.Timeline = class Timeline
 
     constructor: (data) ->
+        console.log data
 
-        kudo.type = 'work' for kudo in data.work
+        kudo.type = 'work' for kudo in data.employers
         kudo.type = 'education' for kudo in data.education
         kudos = data.work.concat data.education
 
@@ -20,7 +21,7 @@ window.Timeline = class Timeline
             html.push "<h1>Working at #{kudo.employer.name}</h1>" unless kudo.end_date
             html.push "<h1>Worked at #{kudo.employer.name}</h1>" if kudo.end_date
 
-            html.push "<h2>#{kudo.start_date} - #{kudo.position.name}</h2>"
+            html.push "<h2>#{kudo.start_date} - #{kudo.position.name}</h2>" if kudo.start_date
             html.push "<h2 class='bottom'>#{kudo.location.name}</h2>"
 
         else if kudo.type is 'education'
@@ -84,15 +85,15 @@ testData =
             'employer': {
                 'id': '121841901176802'
                 'name': 'Xtreme Labs'
-            }, 
+            },
             'location': {
                 'id': '110941395597405'
                 'name': 'Toronto, Ontario'
-            }, 
+            },
             'position': {
                 'id': '144609565576376'
                 'name': 'Agile Engineer'
-            }, 
+            },
             'start_date': '2012-05'
             'end_date': '2012-09'
         },
@@ -100,15 +101,15 @@ testData =
             'employer': {
                 'id': '152361548143668'
                 'name': 'Bookneto'
-            }, 
+            },
             'location': {
                 'id': '104045032964460'
                 'name': 'Kitchener, Ontario'
-            }, 
+            },
             'position': {
                 'id': '109542932398298'
                 'name': 'Software Engineer'
-            }, 
+            },
             'start_date': '2011-09'
             'end_date': '2012-01'
         },
@@ -116,15 +117,15 @@ testData =
             'employer': {
                 'id': '107146985986320'
                 'name': 'Nav Canada'
-            }, 
+            },
             'location': {
                 'id': '109870912368806'
                 'name': 'Ottawa, Ontario'
-            }, 
+            },
             'position': {
                 'id': '139901252703261'
                 'name': 'System Software Developer'
-            }, 
+            },
             'start_date': '2011-01'
             'end_date': '2011-04'
         }]
@@ -133,18 +134,18 @@ testData =
             'school': {
                 'id': '108006165887469'
                 'name': 'E.L. Crossley Secondary School'
-            }, 
+            },
             'type': 'High School'
-        }, 
+        },
         {
             'school': {
                 'id': '103773232995164'
                 'name': 'University of Waterloo'
-            }, 
+            },
             'year': {
                 'id': '143641425651920'
                 'name': '2014'
-            }, 
+            },
             'concentration': [
                 {
                     'id': '104076956295773'
@@ -155,6 +156,6 @@ testData =
         }
     ]
 
-window.timeline = new Timeline testData
+window.timeline = new Timeline window.data
 timeline.dumpNodesTo $('#timeline-wrap')
 
