@@ -30,6 +30,6 @@
     <br />
     <h5>CLICK BELOW TO GET STARTED</h5>
     <br />
-    <a href="#"> <%= image_tag "log_in_fb_button.png" %> </a>
+    <%= link_to image_tag("log_in_fb_button.png"), {:action => :facebook_auth, :controller => :home} %> 
   </div>
 </div>
