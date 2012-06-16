@@ -48,14 +48,14 @@ class User < ActiveRecord::Base
   end
 
   def create_about_me
-    name = name
+    name = self.name
     hometown = nil
     location = nil
-    currentWork = nil
-    pastWork = "CTMS Engineering, Inc"
-    education = "University of Waterloo"
-    email = email
-    website = website
+    currentWork = self.employers.first.name
+    pastWork = nil
+    education = self.educations.last.name
+    email = self.email
+    website = self.website
 
     nameMessage = "Hi, I'm " + name + ". "
 
