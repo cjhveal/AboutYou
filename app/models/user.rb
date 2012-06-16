@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 
   def self.create_or_find_user token
     graph  = Koala::Facebook::API.new(token).get_object("me")
-    user = User.find_or_create :uid => graph["id"]
+    user = User.find_or_create_by_uid graph["id"]
 
     user.uid = graph["id"]
     user.email = graph["email"]
