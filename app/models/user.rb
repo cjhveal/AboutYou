@@ -1,27 +1,61 @@
 class User < ActiveRecord::Base
   attr_accessible :auth_token, :date_of_birth, :email, :name, :uid, :website
 
+  has_many :employers
+  has_many :educations
+
   def self.create_or_find_user token
     graph  = Koala::Facebook::API.new(token).get_object("me")
-    user = User.find_or_create :uid => graph["id"]
+    user = User.find_or_create_by_uid graph["id"]
 
     user.uid = graph["id"]
     user.email = graph["email"]
     user.name = graph["name"]
     user.website = graph["website"]
     user.save
+
+    graph["work"].each do |employer|
+      puts employer
+      attrs = Hash.new
+
+      attrs["name"] = employer["employer"]["name"]
+      attrs["fbid"] =  employer["employer"]["id"]
+      attrs["location"] = employer["location"]["name"] unless employer["location"].blank?
+      attrs["position"] = employer["position"]["name"] unless employer["position"].blank?
+      attrs["start_date"] = employer["start_date"]
+      attrs["end_date"] = employer["end_date"]
+      attrs["user_id"] = user.id
+      Employer.where(attrs).first_or_create
+    end
+
+    graph["education"].each do |education|
+      puts education
+      attrs = Hash.new
+
+      attrs["name"] = education["school"]["name"]
+      attrs["fbid"] = education["school"]["id"]
+      attrs["year"] = education["year"]["name"]
+      attrs["school_type"] = education["type"]
+      attrs["user_id"] = user.id
+
+      if education["concentration"]
+        attrs["concentration"] = education["concentration"].map {|conc| conc["name"]}.join ", "
+      end
+      Education.where(attrs).first_or_create
+    end
+
     user
   end
 
   def create_about_me
-    name = "Nick Lauer"
-    hometown = "Abbotsford, British Columbia"
-    location = "Toronto, Ontario"
+    name = name
+    hometown = nil
+    location = nil
     currentWork = nil
     pastWork = "CTMS Engineering, Inc"
     education = "University of Waterloo"
-    email = "nlauer9@gmail.com"
-    website = "www.nlauer.me"
+    email = email
+    website = website
 
     nameMessage = "Hi, I'm " + name + ". "
 
