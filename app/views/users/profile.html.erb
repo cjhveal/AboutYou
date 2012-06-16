@@ -2,6 +2,12 @@
 <%= stylesheet_link_tag 'timeline' %>
 <%= stylesheet_link_tag 'profile' %>
 
+<script>
+  window.data = {}
+  window.data.employers = <%= raw  @user.employers.to_json %>
+  window.data.education = <%= raw  @user.educations.to_json %>
+</script>
+
 <body style="background:#EDEDED;">
   <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
@@ -15,10 +21,10 @@
   <div class="back-panel padfront" style ="background:url('assets/linen_pattern.png')">
     <div style="width:700px; height:800px; display:inline-block; vertical-align:top;">
       <div class="outerbox padfront">
-      
-      
-      
-      
+
+
+
+
       </div>
       <div id="timeline-wrap" class="outerbox" ></div>
     </div>
@@ -40,6 +46,6 @@
 
 
 
-  <%= javascript_include_tag 'timeline' %> 
+  <%= javascript_include_tag 'timeline' %>
 
 

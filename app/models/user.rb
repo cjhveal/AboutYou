@@ -36,6 +36,7 @@ class User < ActiveRecord::Base
       attrs["fbid"] = education["school"]["id"]
       attrs["year"] = education["year"]["name"]
       attrs["school_type"] = education["type"]
+      attrs["user_id"] = user.id
 
       if education["concentration"]
         attrs["concentration"] = education["concentration"].map {|conc| conc["name"]}.join ", "
