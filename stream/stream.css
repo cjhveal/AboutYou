@@ -1,0 +1,7 @@
+.stream {
+    border: 2px solid #d1dee2;
+    width: 350px;
+    height: 500px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+}
