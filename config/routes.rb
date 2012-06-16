@@ -51,7 +51,7 @@ AboutNew::Application.routes.draw do
   root :to => 'home#index'
   get 'auth/facebook' => 'home#facebook_auth'
   get 'auth/facebook/callback' => 'home#facebook_callback'
-  get 'profile' => 'home#profile'
+  get 'profile(/:id)' => 'users#profile', :as => :profile
 
   # See how all your routes lay out with "rake routes"
 
