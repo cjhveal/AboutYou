@@ -1,5 +1,10 @@
-.box {
+.outerbox {
     height: 150px; 
     width: 650px; 
     margin: 40px auto;
+}
+
+.pic {
+    width: 200px;
+    height: 200px;
 }
