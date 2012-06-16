@@ -2,6 +2,12 @@
 <%= stylesheet_link_tag 'timeline' %>
 <%= stylesheet_link_tag 'profile' %>
 
+<script>
+  window.data = {}
+  window.data.employers = <%= raw  @user.employers.to_json %>
+  window.data.education = <%= raw  @user.educations.to_json %>
+</script>
+
 <body style="background:#EDEDED;">
   <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
@@ -19,6 +25,7 @@
         <br/> <br/> <br/> 
         <%= @user.create_about_me %> 
       
+
       </div>
       <div id="timeline-wrap" class="outerbox" ></div>
     </div>
@@ -40,6 +47,6 @@
 
 
 
-  <%= javascript_include_tag 'timeline' %> 
+  <%= javascript_include_tag 'timeline' %>
 
 
