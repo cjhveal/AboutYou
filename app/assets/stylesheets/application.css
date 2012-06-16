@@ -12,7 +12,8 @@
  *= require_tree .
 */
 
-body {
+body{
+  background-color: #ededed !important;
     padding: 30px;
     margin: 0;
     font-family: sans-serif;

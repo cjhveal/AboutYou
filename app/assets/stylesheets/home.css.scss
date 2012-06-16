@@ -1,3 +1,57 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.padfront {
+  position: relative;
+  clear: left;
+  background: #fff;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+ 
+body {
+	font:14px 'arial','verdana',helvetica san-serif;
+	padding:20px 0;
+	background:url(../images/bg.png);
+	color:#3b3b3b
+}
+ 
+h1,h2,h3,h4,h5,h6 {
+	letter-spacing:0;
+	font-family: 'Oxygen', sans-serif;
+	padding:0 0 10px 0
+}
+
+h1 {
+	font-size:54px;
+	line-height:74px
+}
+
+h2 {
+	font-size:46px;
+	line-height:66px
+}
+
+h3 {
+	font-size:35px;
+	line-height:55px
+}
+
+h4 {
+    font-size:27px;
+	line-height:47px
+}
+
+h5 {
+	font-size:20px;
+	line-height:40px
+}
+
+h6 {
+	font-size:12px
+}
