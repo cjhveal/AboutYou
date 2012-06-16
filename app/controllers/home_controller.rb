@@ -8,7 +8,7 @@ class HomeController < ApplicationController
   end
 
   def facebook_callback
-    session[:token] = authenticator.get_access_token(params[:code])
+    token = authenticator.get_access_token(params[:code])
     user = User.create_or_find_user token
 
     redirect_to profile_path id: user.id
