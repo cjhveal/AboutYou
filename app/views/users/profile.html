@@ -14,7 +14,12 @@
   </div>
   <div class="back-panel padfront" style ="background:url('assets/linen_pattern.png')">
     <div style="width:700px; height:800px; display:inline-block; vertical-align:top;">
-      <div class="outerbox padfront"></div>
+      <div class="outerbox padfront">
+      
+      
+      
+      
+      </div>
       <div id="timeline-wrap" class="outerbox" ></div>
     </div>
     <div style="width:250px; height:800px; display:inline-block; vertical-align:top; float:right;">
@@ -24,8 +29,8 @@
 
 
 
-      <h5 style="margin:0px;">Khallil Mangalji</h5>
-      <h6 style="margin:0px;">Born May 4th | Agile Engineer</h6>
+      <h5 style="margin:0px;"><%= @user.name %></h5>
+      <h6 style="margin:0px;">Born <%= @user.date_of_birth %> | Agile Engineer</h6>
       <h5 style="margin-bottom:0px;">Recent Activity</h5>
       <div class="padfront stream">
       </div>

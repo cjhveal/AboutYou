@@ -17,14 +17,14 @@ class User < ActiveRecord::Base
   end
 
   def create_about_me
-    name = "Nick Lauer"
-    hometown = "Abbotsford, British Columbia"
-    location = "Toronto, Ontario"
+    name = name
+    hometown = nil
+    location = nil
     currentWork = nil
     pastWork = "CTMS Engineering, Inc"
     education = "University of Waterloo"
-    email = "nlauer9@gmail.com"
-    website = "www.nlauer.me"
+    email = email
+    website = website
 
     nameMessage = "Hi, I'm " + name + ". "
 
