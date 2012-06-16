@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20120616204611) do
     t.string   "school_type"
     t.string   "year"
     t.string   "concentration"
+    t.integer  "user_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
@@ -29,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20120616204611) do
     t.datetime "start_date"
     t.datetime "end_date"
     t.string   "fbid"
+    t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

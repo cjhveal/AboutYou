@@ -6,6 +6,7 @@ class CreateEmployers < ActiveRecord::Migration
       t.datetime :start_date
       t.datetime :end_date
       t.string :fbid
+      t.integer :user_id
 
       t.timestamps
     end

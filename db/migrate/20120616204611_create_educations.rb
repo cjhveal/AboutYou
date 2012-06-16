@@ -6,6 +6,7 @@ class CreateEducations < ActiveRecord::Migration
       t.string :school_type
       t.string :year
       t.string :concentration
+      t.integer :user_id
 
       t.timestamps
     end
