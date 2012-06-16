@@ -50,7 +50,7 @@ AboutNew::Application.routes.draw do
   # just remember to delete public/index.html.
   root :to => 'home#index'
   get 'auth/facebook' => 'home#facebook_auth'
-  get 'aut/facebook/callback' => 'home#facebook_callback'
+  get 'auth/facebook/callback' => 'home#facebook_callback'
   get 'profile' => 'home#profile'
 
   # See how all your routes lay out with "rake routes"
