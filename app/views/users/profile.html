@@ -16,8 +16,8 @@
     <div style="width:700px; height:800px; display:inline-block; vertical-align:top;">
       <div class="outerbox padfront">
       
-      
-      
+        <br/> <br/> <br/> 
+        <%= @user.create_about_me %> 
       
       </div>
       <div id="timeline-wrap" class="outerbox" ></div>
@@ -25,12 +25,12 @@
     <div style="width:250px; height:800px; display:inline-block; vertical-align:top; float:right;">
 
 
-      <div class="pic"><img class="overlay" src="assets/circle_border.png" style="background: url('assets/pptest.jpeg') -24px 0 no-repeat; -webkit-border-radius: 100px; border-radius: 100px " /></div>
+      <div class="pic"><img class="overlay" src="assets/circle_border.png" style="background:url(http://graph.facebook.com/khallilm/picture) no-repeat; " /></div>
 
 
 
       <h5 style="margin:0px;"><%= @user.name %></h5>
-      <h6 style="margin:0px;">Born <%= @user.date_of_birth %> | Agile Engineer</h6>
+      <h6 style="margin:0px;"> <%= @user.employers.first.name %> </h6>
       <h5 style="margin-bottom:0px;">Recent Activity</h5>
       <div class="padfront stream">
       </div>
