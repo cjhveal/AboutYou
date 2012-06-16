@@ -1,9 +1,10 @@
 #timeline {
-  width: 450px;
+  width: 100%;
 }
 #timeline h1, #timeline h2 {
   padding: 0;
   text-align: center;
+  line-height: 1em;
 }
 #timeline h1 {
   font-size: 1em;
@@ -20,9 +21,8 @@
   margin-bottom: 20px;
 }
 #timeline .box {
-  border: 1px solid #dfdfdf;
-  padding: 0 20px 0 20px;
   overflow: hidden;
+  background-color: #fefefe;
 }
 #timeline .date {
   margin-left: auto;

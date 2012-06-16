@@ -18,7 +18,8 @@
         kudo.type = 'education';
       }
       kudos = data.work.concat(data.education);
-      box = $('<div class="box"></div>');
+      box = $('<div class="box padfront"></div>');
+      this.wrap = $('<div id="timeline"></div>');
       this.boxHash = kudos.map(function(kudo) {
         return _this.decorateBoxNode(box.clone(), kudo);
       });
@@ -44,11 +45,14 @@
           html.push("<h2 class='bottom'>" + kudo.year.name + "</h2>");
         }
       }
+      $('body').prepend(this.wrap);
       node.append(html.join(''));
-      node.appendTo($('body'));
+      node.appendTo(this.wrap);
       maxHeight = node.outerHeight(true);
+      console.log(maxHeight);
       node.remove();
       node.height(40);
+      this.wrap.remove();
       this.giveJSGoodies(node, maxHeight);
       return {
         year: this.getYear(kudo),
@@ -63,9 +67,8 @@
     };
 
     Timeline.prototype.dumpNodesTo = function(container) {
-      var box, lastYear, sorted, wrap, _i, _len, _results;
-      wrap = $('<div id="timeline"></div>');
-      container.prepend(wrap);
+      var box, lastYear, sorted, _i, _len, _results;
+      container.prepend(this.wrap);
       sorted = this.boxHash.sort(function(item1, item2) {
         return item1.year < item2.year;
       });
@@ -74,10 +77,10 @@
       for (_i = 0, _len = sorted.length; _i < _len; _i++) {
         box = sorted[_i];
         if (box.year && box.year !== lastYear) {
-          wrap.append($("<div class='date'>" + box.year + "</div>"));
+          this.wrap.append($("<div class='date'>" + box.year + "</div>"));
           lastYear = box.year;
         }
-        _results.push(wrap.append(box.node));
+        _results.push(this.wrap.append(box.node));
       }
       return _results;
     };
@@ -185,6 +188,6 @@
 
   window.timeline = new Timeline(testData);
 
-  timeline.dumpNodesTo($('#timeline'));
+  timeline.dumpNodesTo($('#timeline-wrap'));
 
 }).call(this);
