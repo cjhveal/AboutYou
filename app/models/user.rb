@@ -15,12 +15,13 @@ class User < ActiveRecord::Base
     user.save
 
     graph["work"].each do |employer|
+      puts employer
       attrs = Hash.new
 
       attrs["name"] = employer["employer"]["name"]
       attrs["fbid"] =  employer["employer"]["id"]
-      attrs["location"] = employer["location"]["name"]
-      attrs["position"] = employer["position"]["name"]
+      attrs["location"] = employer["location"]["name"] unless employer["location"].blank?
+      attrs["position"] = employer["position"]["name"] unless employer["position"].blank?
       attrs["start_date"] = employer["start_date"]
       attrs["end_date"] = employer["end_date"]
       attrs["user_id"] = user.id
