@@ -51,9 +51,9 @@ class User < ActiveRecord::Base
     name = self.name
     hometown = nil
     location = nil
-    currentWork = nil
-    pastWork = "CTMS Engineering, Inc"
-    education = "University of Waterloo"
+    currentWork = self.employers.first.name
+    pastWork = nil
+    education = self.educations.last.name
     email = self.email
     website = self.website
 
