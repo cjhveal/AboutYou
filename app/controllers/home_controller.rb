@@ -10,6 +10,7 @@ class HomeController < ApplicationController
   end
 
   def facebook_callback
+    session[:token] = authenticator.get_access_token(params[:code])
     render 'profile'
   end
 
