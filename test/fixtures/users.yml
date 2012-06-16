@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  auth_token: MyString
+  email: MyString
+  website: MyString
+  first_name: MyString
+  last_name: MyString
+  uid: MyString
+  date_of_birth: 2012-06-16 12:18:54
+
+two:
+  auth_token: MyString
+  email: MyString
+  website: MyString
+  first_name: MyString
+  last_name: MyString
+  uid: MyString
+  date_of_birth: 2012-06-16 12:18:54
