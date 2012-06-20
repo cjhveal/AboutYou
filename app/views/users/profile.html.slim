@@ -13,8 +13,6 @@
     #timeline-wrap.outerbox
       #timeline
         = render :partial => "box", :collection => @user.history
-
-
   .pic-frame
     .pic = image_tag 'circle_border.png', :style => "background-image:url(http://graph.facebook.com/#{@user.uid}/picture?type=large)"
     h5.no-margin = @user.name
