@@ -12,8 +12,7 @@
       = @user.create_about_me
     #timeline-wrap.outerbox
       #timeline
-        - @user.history.each do |e|
-          = render :partial => "box", :locals => {e: e}
+        = render :partial => "box", :collection => @user.history
 
 
   .pic-frame
