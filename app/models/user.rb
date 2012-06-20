@@ -97,7 +97,7 @@ class User < ActiveRecord::Base
         workMessage = "I have previously worked at "+pastWork + ""
       end
     else
-      workMessage = "Currently I'm working at "+currentWork
+      workMessage = "I work at "+currentWork
       if pastWork.nil?
         workMessage = workMessage + "."
       else
