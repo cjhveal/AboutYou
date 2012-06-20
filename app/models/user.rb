@@ -4,6 +4,11 @@ class User < ActiveRecord::Base
   has_many :employers
   has_many :educations
 
+  def history
+    history = (employers + educations)
+    history.sort_by(&:start_date).reverse
+  end
+
   def self.create_or_find_user token
     graph  = Koala::Facebook::API.new(token).get_object("me")
     user = User.find_or_create_by_uid graph["id"]
@@ -34,7 +39,7 @@ class User < ActiveRecord::Base
 
       attrs["name"] = education["school"]["name"]
       attrs["fbid"] = education["school"]["id"]
-      attrs["year"] = education["year"]["name"]
+      attrs["end_date"] = DateTime.parse "1-5-#{education["year"]["name"]}" if education["year"]["name"]
       attrs["school_type"] = education["type"]
       attrs["user_id"] = user.id
 
