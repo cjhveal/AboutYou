@@ -12,8 +12,8 @@
     img.icon src='http://static.ak.fbcdn.net/rsrc.php/v2/yE/r/4U1vSOqKlpj.png'
     - if e.end_date.blank?
       h1 Working at #{e.name}
-      h2 #{e.start_date} - #{e.position}
+      h2 #{date_format e.start_date} - #{e.position}
     - else
       h1 Worked at #{e.name}
-      h2 #{e.start_date}-#{e.end_date} - #{e.position}
+      h2 #{date_format e.start_date}-#{date_format e.end_date} - #{e.position}
     h2.bottom #{e.location}
