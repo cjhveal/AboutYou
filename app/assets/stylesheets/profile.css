@@ -56,6 +56,9 @@
   margin:0px;
 }
 
+#timeline-wrap {
+  background-image: url('band.png');
+}
 #timeline {
   width: 100%;
 }
