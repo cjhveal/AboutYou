@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120618003406) do
+ActiveRecord::Schema.define(:version => 20120620122453) do
 
   create_table "educations", :force => true do |t|
     t.string   "name"
@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(:version => 20120618003406) do
     t.datetime "date_of_birth"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.string   "hometown"
+    t.string   "location"
   end
 
 end

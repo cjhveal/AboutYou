@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   attr_accessible :auth_token, :date_of_birth, :email, :name, :uid, :website
 
-  has_many :employers
-  has_many :educations
+  has_many :employers, :dependent => :destroy
+  has_many :educations, :dependent => :destroy
 
   def history
     history = (employers + educations)
@@ -17,19 +17,30 @@ class User < ActiveRecord::Base
     user.email = graph["email"]
     user.name = graph["name"]
     user.website = graph["website"]
+    user.location = graph["location"]["name"]
+    user.hometown = graph["hometown"]["name"]
     user.save
 
     graph["work"].each do |employer|
       puts employer
       attrs = Hash.new
 
-      attrs["name"] = employer["employer"]["name"]
-      attrs["fbid"] =  employer["employer"]["id"]
-      attrs["location"] = employer["location"]["name"] unless employer["location"].blank?
-      attrs["position"] = employer["position"]["name"] unless employer["position"].blank?
-      attrs["start_date"] = employer["start_date"]
-      attrs["end_date"] = employer["end_date"]
-      attrs["user_id"] = user.id
+      attrs[:name] = employer["employer"]["name"]
+      attrs[:fbid] =  employer["employer"]["id"]
+      attrs[:location] = employer["location"]["name"] unless employer["location"].blank?
+      attrs[:position] = employer["position"]["name"] unless employer["position"].blank?
+
+      if employer["start_date"]
+        year, month = employer["start_date"].split "-"
+        attrs[:start_date] = DateTime.new year.to_i, month.to_i
+      end
+
+      if employer["end_date"]
+        year, month = employer["end_date"].split "-"
+        attrs[:end_date] = DateTime.new year.to_i, month.to_i
+      end
+
+      attrs[:user_id] = user.id
       Employer.where(attrs).first_or_create
     end
 
@@ -37,14 +48,14 @@ class User < ActiveRecord::Base
       puts education
       attrs = Hash.new
 
-      attrs["name"] = education["school"]["name"]
-      attrs["fbid"] = education["school"]["id"]
-      attrs["end_date"] = DateTime.parse "1-5-#{education["year"]["name"]}" if education["year"]["name"]
-      attrs["school_type"] = education["type"]
-      attrs["user_id"] = user.id
+      attrs[:name] = education["school"]["name"]
+      attrs[:fbid] = education["school"]["id"]
+      attrs[:end_date] = DateTime.parse "1-5-#{education["year"]["name"]}" if education["year"]["name"]
+      attrs[:school_type] = education["type"]
+      attrs[:user_id] = user.id
 
       if education["concentration"]
-        attrs["concentration"] = education["concentration"].map {|conc| conc["name"]}.join ", "
+        attrs[:concentration] = education["concentration"].map {|conc| conc["name"]}.join ", "
       end
       Education.where(attrs).first_or_create
     end
@@ -54,8 +65,8 @@ class User < ActiveRecord::Base
 
   def create_about_me
     name = self.name
-    hometown = nil
-    location = nil
+    hometown = self.hometown
+    location = self.location
     currentWork = self.employers.first.name
     pastWork = nil
     education = self.educations.last.name
