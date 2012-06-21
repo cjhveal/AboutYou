@@ -4,14 +4,14 @@ $ ->
     box = $(this)
     box.css
       'border-color': '#333'
-      'height': maxHeight
+      'height': '120px'
     box.find('.icon').css
-        'margin-top': '20px'
+        'margin-top': '10px'
   $('.box').on 'mouseleave', ->
     box = $(this)
     box.css
         'border-color': '#dfdfdf'
-        'height': '40px'
+        'height': '60px'
     box.find('.icon').css
         'margin-top': '4px'
   $('.box').trigger 'mouseleave'
