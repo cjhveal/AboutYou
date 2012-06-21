@@ -4,7 +4,8 @@
 }
 
 .outerbox.aboutme {
-    height: 150px;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 .pic img {
@@ -38,7 +39,7 @@
 
 .outerbox.padfront {
     border: 1px solid #999;
-    padding: 0px 20px;
+    padding: inherit 20px;
 }
 
 .frame {

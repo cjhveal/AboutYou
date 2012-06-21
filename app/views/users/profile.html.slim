@@ -5,11 +5,7 @@
       .nav-collapse.collapse
 .back-panel.padfront
   .frame
-    .outerbox.aboutme.padfront
-      br
-      br
-      br
-      = @user.create_about_me
+    .outerbox.aboutme.padfront = @user.create_about_me
     #timeline-wrap.outerbox
       #timeline
         = render :partial => "box", :collection => @user.history

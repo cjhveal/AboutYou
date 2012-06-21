@@ -4,7 +4,7 @@ $ ->
     box = $(this)
     box.css
       'border-color': '#333'
-      'height': '120px'
+      'height': '110px'
     box.find('.icon').css
         'margin-top': '10px'
   $('.box').on 'mouseleave', ->
