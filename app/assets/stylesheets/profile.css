@@ -4,8 +4,7 @@
 }
 
 .outerbox.aboutme {
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding: 30px 20px;
 }
 
 .pic img {
@@ -109,8 +108,13 @@
   -webkit-transition: 200ms ease-in-out;
 }
 #timeline .cap {
-  background: url('http://static.ak.fbcdn.net/rsrc.php/v2/yn/r/sEhgshq-BNx.png') 0 -33px no-repeat;
+  background: url('cap.png') 0 -33px no-repeat;
 }
+
+.case.icon {
+  background: url('case.png') no-repeat;
+}
+
 #timeline .icon {
   margin: 0 auto;
   display: block;

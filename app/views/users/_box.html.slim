@@ -9,7 +9,7 @@
       h1 Will attend #{box.name}
     h2.bottom #{box.concentration + " - " if box.concentration} Class of #{box.end_date.year}
   - else
-    img.icon src='http://static.ak.fbcdn.net/rsrc.php/v2/yE/r/4U1vSOqKlpj.png'
+    .icon.case
     - if box.end_date.blank?
       h1 Working at #{box.name}
       h2 #{date_format box.start_date} - #{box.position}
