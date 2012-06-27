@@ -10,7 +10,9 @@
     h2.bottom #{box.concentration + " - " if box.concentration} Class of #{box.end_date.year}
   - else
     .icon.case
-    - if box.end_date.blank?
+    - if box.start_date.blank?
+      h1 Employed at #{box.name}
+    - elsif box.end_date.blank?
       h1 Working at #{box.name}
       h2 #{date_format box.start_date} - #{box.position}
     - else

@@ -6,11 +6,13 @@ class User < ActiveRecord::Base
 
   def history
     history = (employers + educations)
-    history.sort_by(&:start_date).reverse
+    undated, dated = history.reject(&:start_date), history.select(&:start_date)
+    dated.sort_by(&:start_date).reverse + undated
   end
 
   def self.create_or_find_user token
-    graph  = Koala::Facebook::API.new(token).get_object("me")
+    @api = Koala::Facebook::API.new(token)
+    graph = @api.get_object("me")
     user = User.find_or_create_by_uid graph["id"]
 
     user.uid = graph["id"]
@@ -30,12 +32,12 @@ class User < ActiveRecord::Base
       attrs[:location] = employer["location"]["name"] unless employer["location"].blank?
       attrs[:position] = employer["position"]["name"] unless employer["position"].blank?
 
-      if employer["start_date"]
+      if employer["start_date"] and employer["start_date"] != "0000-00"
         year, month = employer["start_date"].split "-"
         attrs[:start_date] = DateTime.new year.to_i, month.to_i
       end
 
-      if employer["end_date"]
+      if employer["end_date"] and employer["end_date"] != "0000-00"
         year, month = employer["end_date"].split "-"
         attrs[:end_date] = DateTime.new year.to_i, month.to_i
       end
@@ -59,7 +61,9 @@ class User < ActiveRecord::Base
       end
       Education.where(attrs).first_or_create
     end
-
+    query = "SELECT post_id, actor_id, message, app_id, attribution FROM stream WHERE source_id = me() AND app_id = '2231777543' LIMIT 1000"
+    puts @api.fql_query(query)
+    
     user
   end
 

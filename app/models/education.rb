@@ -14,5 +14,6 @@ class Education < ActiveRecord::Base
       total += 1 if concentration =~ /honou?rs/i
       total += 1 if concentration =~ /(co\-op|coop)/i
     end
+    return total
   end
 end
